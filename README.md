@@ -1,6 +1,8 @@
 # Semantic-Guided De-Attention with Sharpened Triplet Marginal Loss for Visual Place Recognition
 
-(*This manuscript is undergoing a third review process since being submitted to the Pattern Recognition Journal in August 2022. Manuscript Number: PR-D-22-01909R1*)
+This paper was accepted to the Pattern Recognition Journal (Elsevier, Impact Factor 8.518) on 25 Apr. 2023
+Publication information: Volume 141, September 2023, 109645
+https://doi.org/10.1016/j.patcog.2023.109645
 
 Implementation of  "Semantic-Guided De-Attention with Sharpened Triplet Marginal Loss for Visual Place Recognition" in PyTorch, including code for training the model on the Pittsburgh dataset.
 
@@ -8,7 +10,7 @@ The baseline model we referenced and its pre-trained weight are available here: 
 
 ### Reproducing the paper
 
-Below Table are the result as compared to the baseline with existing attention model for the visual place recognition task with a Pittsburgh dataset:
+Below Table is a benchmark comparing the baseline model including our de-attention and other existing attention models for the visual place recognition task with a Pittsburgh dataset:
 
 You can reproduce the results by following the instruction using two bash scripts in the Test section (See the Test section at the end of the page for details on how to run it).
 
@@ -36,7 +38,7 @@ You can reproduce the results by following the instruction using two bash script
 4. [tensorboardX](https://github.com/lanpa/tensorboardX)
 
 
-## Pretrained checkpoints (weights) of main network to Test network
+## Pretrained checkpoints (weights) of the main network
 Download weight_image_retrieval.tar.gz from https://drive.google.com/file/d/1xYxgii_iZogGWtKqLTQF2XlCfYguj1CY/view?usp=share_link"
 
 ## Data
@@ -49,13 +51,15 @@ and the dataset specifications for the Pittsburgh dataset (available [here](http
 
 # Usage
 
-After git clone https://github.com/ccsmm78/deattention_with_stml_for_vpr.git , you need to run following once. All script here is bash shell script.
+After git clone this page, you need to run the following once. All script here is a bash shell script.
 
 ```
+$ git clone https://github.com/deepguider/deattention_with_stml_for_vpr
+$ cd deattention_with_stml_for_vpr
 $ ./9setup.sh
 ```
 
-`main.py` contains the majority of the code, and has three different modes (`train`, `test`, `cluster`) which we'll discuss in mode detail below.
+`main.py` contains the majority of the code, and has three different modes (`train`, `test`, `cluster`) which we'll discuss in more detail below.
 
 ## Cluster
 
@@ -75,7 +79,7 @@ To train baseline (vgg16+netvlad) including existing attention networks, run
 
 ### Train ours
 
-You need a pretrained weight of MobileNet which is used for a semantic guidance of our deattention network.
+You need a pre-trained weight of MobileNet which is used for oure semantic guidance of our de-attention network.
 Download weight_semantic_guidance.tar.gz from https://drive.google.com/file/d/10d0hykoqynYZZU9SDJXyKihQ0-TxhWMT/view?usp=share_link"
 
 	$ cd deattention_with_stml_for_vpr
@@ -83,7 +87,7 @@ Download weight_semantic_guidance.tar.gz from https://drive.google.com/file/d/10
 
 Then you've got ./deattention_with_stml_for_vpr/pretrained/
 
-Next, to train our deattention and sTML, run
+Next, to train our de-attention and sTML, run
 
 	$ ./1run_train_our_deattention_with_sTML.sh
 
@@ -115,8 +119,22 @@ Next, run the following script to test networks with our pretrained weights.
 	or
 	$ ./2run_test_our_deattention_with_sTML.sh
 
+## Citation ours
+CHOI, Seung-Min, et al. Semantic-guided de-attention with sharpened triplet marginal loss for visual place recognition. Pattern Recognition, 2023, 141: 109645.
+
+For BibTxt
+@article{choi2023semantic,
+  title={Semantic-guided de-attention with sharpened triplet marginal loss for visual place recognition},
+  author={Choi, Seung-Min and Lee, Seung-Ik and Lee, Jae-Yeong and Kweon, In So},
+  journal={Pattern Recognition},
+  volume={141},
+  pages={109645},
+  year={2023},
+  publisher={Elsevier}
+}
+
 ## Reference
-[1] pytorch code implementation (https://github.com/Nanne/pytorch-NetVlad) for R. Arandjelovic, P. Gronat, A. Torii, T. Pajdla, J. Sivic, Netvlad: Cnn architecture for weakly supervised place recognition, in: Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 5297- 5307.
+[1] PyTorch code implementation (https://github.com/Nanne/pytorch-NetVlad) for R. Arandjelovic, P. Gronat, A. Torii, T. Pajdla, J. Sivic, Netvlad: Cnn architecture for weakly supervised place recognition, in: Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 5297- 5307.
 
 [2] H. J. Kim, E. Dunn, J.-M. Frahm, Learned contextual feature reweighting for image geo-localization, in: 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), IEEE, 2017, pp. 3251–3260
 
